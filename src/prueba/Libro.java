@@ -62,7 +62,7 @@ public class Libro {
      * quieran) y mostrarlos por pantalla. Por último, indicar cuál de los 2 tiene
      * más páginas.
      */
-    Random random =new Random();
+    Random random = new Random();
     private String ISBN;
     private String titulo;
     private String autor;
@@ -77,6 +77,7 @@ public class Libro {
         this.nPaginas = nPaginas;
         this.precio = precio;
     }
+
     // setter
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
@@ -90,7 +91,9 @@ public class Libro {
         this.autor = autor;
     }
 
-    public void setNPaginas (int nPaginas){this.nPaginas = nPaginas;}
+    public void setNPaginas(int nPaginas) {
+        this.nPaginas = nPaginas;
+    }
 
     public void setPrecio(double precio) {
         this.precio = precio;
@@ -117,18 +120,33 @@ public class Libro {
     public double getPrecio() {
         return this.precio;
     }
-    
 
-    public String toString(){
-        return "El libro: "+getTitulo() +" con ISBN creado: "+getISBN() + " por el autor(a): "+ getAutor()
-        + "\ntiene "+ getNPaginas() +" páginas y cuesta : "+ getPrecio() + " Dolares";
+    public String toString() {
+        return "El libro: " + getTitulo() + " con ISBN creado: " + getISBN() + " por el autor(a): " + getAutor()
+                + "\ntiene " + getNPaginas() + " páginas y cuesta : " + getPrecio() + " Dolares";
     }
 
-    public void generISBN(){
-        int num1= random.nextInt(90)+10;
-        String str1 = String.valueOf(num1);
-        int num2= random.nextInt(900)+100;
-        String str2 = String.valueOf(num2);
-        setISBN("978-9945-"+str1+"-"+str2+"-7");
+    public void generISBN() {
+        int digit1 = 9;
+        int digit2 = 7;
+        int digit3 = 8;
+
+        int digit4 = 9;
+        int digit5 = 9;
+        int digit6 = 4;
+        int digit7 = 5;
+
+        int digit8 = random.nextInt(9) + 1;
+        int digit9 = random.nextInt(9) + 1;
+
+        int digit10 = random.nextInt(9) + 1;
+        int digit11 = random.nextInt(9) + 1;
+        int digit12 = random.nextInt(9) + 1;
+
+        int check = 10 - (((digit1 * 1) + (digit2 * 3) + (digit3 * 1) + (digit4 * 3) + (digit5 * 1) + (digit6 * 3)
+                + (digit7 * 1) + (digit8 * 3) + (digit9 * 1) + (digit10 * 3) + (digit11 * 1) + (digit12 * 3)) % 10);
+        int digit13 = check;
+        setISBN("" + digit1 + digit2 + digit3 + "-" + digit4 + digit5 + digit6 + digit7 + "-" + digit8 + digit9 + "-"
+                + digit10 + digit11 + digit12 + "-" + digit13);
     }
 }
